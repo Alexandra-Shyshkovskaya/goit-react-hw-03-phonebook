@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import style from "./ContactsForm.module.css";
 
+const INITIAL_STATE = {
+  name: "",
+  number: "",
+};
+
 class ContactForm extends Component {
-  state = {
-    name: "",
-    number: "",
-  };
+  state = { ...INITIAL_STATE };
 
   handleChange = (event) => {
     const { name, value } = event.currentTarget;
@@ -20,7 +22,6 @@ class ContactForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     this.props.addContacts(this.state);
     this.reset();
   };
